@@ -11,6 +11,9 @@ jobs:
         with:
           repository: roc-lang/roc
 
+      - uses: msys2/setup-msys2@v2
+        id: setup-msys2
+
       - uses: mlugg/setup-zig@d1434d08867e3ee9daa34448df10607b98908d29 # 2.2.1
         with:
           version: 0.16.0
@@ -24,3 +27,4 @@ jobs:
         uses: mxschmitt/action-tmate@v3
         with:
           limit-access-to-actor: true
+          msys2-location: ${{ steps.setup-msys2.outputs.msys2-location }}
